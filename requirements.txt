@@ -1,0 +1,9 @@
+pandas
+pymongo
+notebook
+pymongo[srv]
+ipykernel
+statsmodels
+matplotlib
+seaborn
+scikit-learn
