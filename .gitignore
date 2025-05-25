@@ -175,3 +175,8 @@ cython_debug/
 
 /catboost_info
 .DS_Store
+
+/my-venv
+
+log/
+data/dataset/
