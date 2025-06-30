@@ -1,0 +1,109 @@
+# ====================
+# Python environment
+# ====================
+__pycache__/
+*.py[cod]
+*.so
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+ENV/
+.Python
+
+# ====================
+# Jupyter and IPython
+# ====================
+.ipynb_checkpoints/
+*.ipynb
+
+# ====================
+# Logs and outputs
+# ====================
+*.log
+*.out
+*.tmp
+
+# ====================
+# System files
+# ====================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ====================
+# Data files
+# ====================
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.jsonl
+*.xlsx
+*.xls
+*.sav
+*.h5
+*.pkl
+*.joblib
+*.npy
+*.npz
+*.zip
+*.tar.gz
+*.tar
+*.rar
+
+data/
+datasets/
+logs/
+checkpoints/
+experiments/
+models/
+artifacts/
+outputs/
+
+# ====================
+# Secrets & configs
+# ====================
+*.env
+.env.*
+secrets/
+credentials/
+aws_config/
+.aws_credentials/
+*.pem
+*.key
+*.crt
+
+# ====================
+# Notebooks outputs
+# ====================
+*.nbconvert.ipynb
+*.nb.html
+
+# ====================
+# Docker related
+# ====================
+Dockerfile~
+.dockerignore
+docker-compose.override.yml
+
+# ====================
+# Project related
+# ====================
+
+artifacts/
+catboost_info/
+.github/
+.jenkins/
+assignments/
+docs/
+flowcharts/
+artifacts/
+logs/
+notebooks/
+venv/
+LICENSE
+README.md

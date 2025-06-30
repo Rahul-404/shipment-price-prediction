@@ -180,3 +180,5 @@ cython_debug/
 
 log/
 data/dataset/
+.aws_credentials/
+artifacts/
