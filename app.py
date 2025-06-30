@@ -11,6 +11,7 @@ from shipment.components.model_predictor import CostPredictor, shippingData
 from shipment.constant import APP_HOST, APP_PORT
 from shipment.pipeline.training_pipeline import TrainPipeline
 
+from datetime import datetime
 
 app = FastAPI()
 
@@ -79,13 +80,16 @@ async def trainRouteClient():
         return Response(f"Error Occurred! {e}")
 
 
-@app.get("/predict")
+@app.get("/")
 async def predictGetRouteClient(request: Request):
     try:
         
         return templates.TemplateResponse(
             "index.html",
-            {"request": request, "context": "Rendering"},
+            {"request": request, 
+             "context": "Rendering",
+            "current_year": datetime.now().year
+             },
         )
 
     except Exception as e:
@@ -93,7 +97,7 @@ async def predictGetRouteClient(request: Request):
 
 
 
-@app.post("/predict")
+@app.post("/")
 async def predictRouteClient(request: Request):
     try:
 
@@ -123,7 +127,10 @@ async def predictRouteClient(request: Request):
 
         return templates.TemplateResponse(
             "index.html",
-            {"request": request, "context": cost_value},
+            {"request": request, 
+             "context": cost_value,
+            "current_year": datetime.now().year
+            }
         )
 
 
