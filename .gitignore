@@ -182,3 +182,4 @@ log/
 data/dataset/
 .aws_credentials/
 artifacts/
+templates/index_dev.html
