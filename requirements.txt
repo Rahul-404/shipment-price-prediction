@@ -2,12 +2,6 @@ pandas
 pymongo
 notebook
 pymongo[srv]
-ipykernel
-statsmodels
-matplotlib
-seaborn
-scikit-learn
-
 boto3
 mypy-boto3-s3
 fastapi
@@ -17,12 +11,13 @@ python-multipart
 ipykernel
 matplotlib
 PyYAML
+scikit-learn
+seaborn
 from-root
 xgboost
 dill
-evidently==0.1.57.dev0
+evidently==0.3.0
 catboost
 category-encoders==2.5.1.post0
 python-dotenv
-botocore
 -e .
