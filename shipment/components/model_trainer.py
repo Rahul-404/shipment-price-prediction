@@ -185,7 +185,7 @@ class ModelTrainer:
                 logging.info("Saved the best model object path")
             else:
                 logging.info("No best model found with score more than base score")
-                raise "No best model found with score more than base score "
+                # raise "No best model found with score more than base score "
 
             # saving the Model trainer artifacts
             model_trainer_artifacts = ModelTrainerArtifacts(

@@ -84,7 +84,7 @@ class MongoDBOperation:
             df = pd.DataFrame(list(collection.find()))
             if "_id" in df.columns.to_list():
                 df = df.drop(columns=["_id"],axis=1)
-
+                
             logging.info("Converted collection to dataframe")
             logging.info(
                 "Exited get_collection_as_dataframe method of MongoDB_Operation class"

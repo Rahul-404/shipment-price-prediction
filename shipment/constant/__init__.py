@@ -1,5 +1,4 @@
 import os
-from os import environ
 from datetime import datetime
 from from_root.root import from_root
 from dotenv import load_dotenv
@@ -11,11 +10,11 @@ TIMESTAMP: str = datetime.now().strftime("%m_%d_%Y_%H_%M_%S")
 MODEL_CONFIG_FILE = "config/model.yaml"
 SCHEMA_FILE_PATH = "config/schema.yaml"
 
-DB_URL = environ["MONGO_DB_URL"]
+DB_URL = os.getenv("MONGO_DB_URL")
 
 TARGET_COLUMN = "Cost"
-DB_NAME = "shipmentdata"
-COLLECTION_NAME = "ship"
+DB_NAME = "shiping"
+COLLECTION_NAME = "shiping_data"
 TEST_SIZE = 0.2
 ARTIFACTS_DIR = os.path.join(from_root(), "artifacts", TIMESTAMP)
 
@@ -43,7 +42,7 @@ MODEL_FILE_NAME = "shipping_price_model.pkl"
 MODEL_SAVE_FORMAT = ".pkl"
 
 
-BUCKET_NAME = "shipment-model-io-files"
+BUCKET_NAME = "shipment-project-model-io-file"
 S3_MODEL_NAME = "shipping_price_model.pkl"
 
 

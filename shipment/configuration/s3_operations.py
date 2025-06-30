@@ -59,6 +59,7 @@ class S3Operation:
         try:
             bucket = self.s3_resource.Bucket(bucket_name)
             logging.info("Exited the get_bucket method of S3Operations class")
+            return bucket
         except Exception as e:
             raise shippingException(e, sys) from e
         
@@ -150,7 +151,7 @@ class S3Operation:
         try:
             self.s3_resource.Object(bucket_name, folder_name).load()
 
-        except ClinetError as e:
+        except ClientError as e:
             if e.response["Error"]["Code"] == "404":
                 folder_obj = folder_name + "/"
                 self.s3_client.put_object(Bucket=bucket_name, key=folder_obj)
@@ -181,7 +182,7 @@ class S3Operation:
                 f"Uploading {from_filename} file to {to_filename} file in {bucket_name} bucket"
             )
 
-            self.s3_resource.meta.client_upload_file(
+            self.s3_client.upload_file(
                 from_filename, bucket_name, to_filename
             )
             logging.info(

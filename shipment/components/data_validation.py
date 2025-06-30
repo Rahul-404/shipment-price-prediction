@@ -4,8 +4,11 @@ import sys
 import os
 import pandas as pd
 from pandas import DataFrame
-from evidently.model_profile import Profile
-from evidently.model_profile.sections import DataDriftProfileSection
+#from evidently.model_profile import Profile
+#from evidently.model_profile.sections import DataDriftProfileSection
+
+from evidently.report import Report
+from evidently.metric_preset import DataDriftPreset
 from typing import Tuple, Union
 from shipment.exception import shippingException
 from shipment.entity.config_entity import DataValidationConfig
@@ -202,8 +205,11 @@ class DataValidation:
         Output      :   Report in json format and drift status True or False 
         """
         try:
-            data_drift_profile = Profile(sections=[DataDriftProfileSection()])
-            data_drift_profile.calculate(reference, production)
+            # data_drift_profile = Profile(sections=[DataDriftProfileSection()])
+            # data_drift_profile.calculate(reference, production)
+
+            data_drift_profile = Report([DataDriftPreset()])
+            data_drift_profile.run(reference_data=reference, current_data=production)
 
             # Getting data drift report in json format
             report = data_drift_profile.json()
@@ -214,14 +220,16 @@ class DataValidation:
             self.data_validation_config.UTILS.write_json_to_yaml_file(
                 json_report, data_drift_file_path
             )
-            n_features = json_report["data_drift"]["data"]["metrics"]["n_features"]
-            n_drifted_features = json_report["data_drift"]["data"]["metrics"][
-                "n_drifted_features"
-            ]
+            # n_features = json_report["data_drift"]["data"]["metrics"]["n_features"]
+            n_features = json_report["metrics"][0]["result"]["number_of_columns"]
+            # n_drifted_features = json_report["data_drift"]["data"]["metrics"][
+            #     "n_drifted_features"
+            # ]
+            n_drifted_features = json_report["metrics"][0]["result"]["number_of_drifted_columns"]
             if get_ratio:
                 return n_drifted_features / n_features  # Calculating the drift ratio
             else:
-                return json_report["data_drift"]["data"]["metrics"]["dataset_drift"]
+                return json_report["metrics"][0]["result"]["dataset_drift"]
 
         except Exception as e:
             raise shippingException(e, sys) from e

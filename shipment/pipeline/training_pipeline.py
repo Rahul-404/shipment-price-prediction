@@ -197,4 +197,4 @@ class TrainPipeline:
             logging.info("Exited the run_pipeline method of TrainPipeline class")
 
         except Exception as e:
-            raise shippingException(e, sys) from e     
+            raise shippingException(e, sys) from e
